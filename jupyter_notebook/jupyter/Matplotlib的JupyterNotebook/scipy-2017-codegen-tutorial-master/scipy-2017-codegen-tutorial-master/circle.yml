@@ -1,0 +1,22 @@
+general:
+  branches:
+    only:
+     - master
+
+machine:
+  environment:
+    PATH: "$HOME/miniconda/bin:${PATH}"
+
+dependencies:
+  pre:
+    - ./bin/circleci_dependencies.sh
+  cache_directories:
+    - "~/miniconda"
+
+test:
+  override:
+    - sudo apt-get remove gcc
+    - cd && rm -rf ~/.pyenv && rm -rf ~/virtualenvs
+    - sed -i 's/conda-root-py/python3/' notebooks/*.ipynb
+    - ./bin/render_notebooks.sh
+    - bash -c "source activate codegen17; python test_installation.py"

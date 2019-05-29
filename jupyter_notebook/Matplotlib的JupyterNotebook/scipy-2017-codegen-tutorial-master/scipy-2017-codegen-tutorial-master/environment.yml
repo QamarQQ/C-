@@ -1,0 +1,20 @@
+name: codegen17
+channels:
+  - sympy
+  - symengine
+  - conda-forge
+  - defaults
+dependencies:
+  - python >=3.5
+  - setuptools
+  - notebook
+  - nbconvert
+  - numpy
+  - matplotlib
+  - scipy
+  - cython
+  - sympy =1.1
+  - sundials <3.0.0
+  - python-symengine
+  - numba
+  - scipy2017codegen
